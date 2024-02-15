@@ -1,2 +1,2 @@
-# python-experiments
-All of my python experiments stored in one place and neatly organized by year!
+# Python Experiments
+Here is a neatly organized collection of random python scripts. 
