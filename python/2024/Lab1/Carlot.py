@@ -1,7 +1,7 @@
 from Vehicle import * ## yes I used the wildcard fight me
 # 10/13/24
 
-class Carlot:
+class Carlot(object):
     def __init__(self, lot_name: str) -> None:
         self.lot_name = lot_name
         self.lot: list = []
