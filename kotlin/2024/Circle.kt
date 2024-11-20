@@ -1,5 +1,7 @@
-class Circle {
-    private var radius: Double = 0.0
+class Circle(rad: Double) {
+    private var radius: Double = rad
+
+    constructor(): this(0.0)
 
     fun setRadius(r: Double): Unit {
         radius = r
@@ -19,5 +21,10 @@ class Circle {
 
     fun getCircumference(): Double {
         return 2 * radius * Math.PI
+    }
+
+    override fun toString(): String {
+        return String.format("Area: %.3f, Diameter: %.3f, Circumference: %.3f" ,
+            getArea() , getDiameter() , getCircumference())
     }
 }
