@@ -1,18 +1,20 @@
 fun main() {
-    val shape = Circle()
     println("--- Welcome to the Circle Calculator ---")
     println("        -- Written in Kotlin --")
 
     print("Radius: ")
-    shape.setRadius(readln().toDouble())
+    var x = readln().toDouble()
 
-    val formArea = String.format("%.3f" , shape.getArea())
-    val formDiam = String.format("%.3f" , shape.getDiameter())
-    val formCirc = String.format("%.3f" , shape.getCircumference())
+    println("Parameterized Constructor")
+    val shape = Circle(x)
 
-    println("Area: $formArea")
-    println("Diameter: $formDiam")
-    println("Circumference: $formCirc")
+    println(shape.toString())
+
+    println()
+    println("Non-parameterized constructor")
+    val shape2 = Circle()
+
+    println(shape2.toString())
 
     println("--- Thank you! ---")
 }
