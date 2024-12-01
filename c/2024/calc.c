@@ -38,7 +38,7 @@ int main(void)
         else if (opperation == '/')
         {
             if (x % y == 0) 
-            {   // decision structor to determin if there is no remainder
+            {   // decision structure to determine if there is no remainder
                 printf("Ans:\t%i / %i = %.0f\n" , x , y , div(x , y)) ;
             }
             else
