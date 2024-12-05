@@ -30,6 +30,6 @@ class Student(name: String, major: String, grade: Int) {
     }
 
     override fun toString(): String {
-        return String.format("%14s, majoring in %s, received a %d" , nam , maj , gra)
+        return String.format("%s, majoring in %s, received a %d" , nam , maj , gra)
     }
 }
