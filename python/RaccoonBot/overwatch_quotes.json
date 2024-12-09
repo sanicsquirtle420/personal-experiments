@@ -1,8 +1,16 @@
 { "quotes": [
+  {"person": "Sigma" , "quote": "The universe sings to me!"} ,
   {"person": "Juno" , "quote":  "Welcome to orbit!"} ,
   {"person": "Juno" , "quote": "Scaredy cat? But cats are the scariest creature of them all."} ,
   {"person": "Kiriko" , "quote":  "Let the kitsune guide you!"} ,
+  {"person": "Kiriko" , "quote": "I draw the lovers... is something tempting you?"} ,
+  {"person": "Junkrat" , "quote": "Fire in the hole!"} ,
   {"person": "D.Va" , "quote":  "Nerf this!"} ,
   {"person": "D.Va" , "quote": "So don't take it personally when I get the most kills.. kay."} ,
-  {"person": "Mercy" , "quote": "Heros never die!"}
+  {"person": "Diego" , "quote": "https://instagram.com/shelby.the.doggo"} ,
+  {"person": "Roadhog" , "quote": "Unloading scrap."} ,
+  {"person": "Mercy" , "quote": "Heroes never die!"} ,
+  {"person": "Mei" , "quote": "Freeze! Don't move."} ,
+  {"person": "Mei" , "quote": "Come on snowball, we got this."} ,
+  {"person": "Widowmaker" , "quote": "No one can hide from my sight."}
 ] }
