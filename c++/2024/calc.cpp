@@ -19,25 +19,25 @@ int main() {
 			ans = math.add() ;
 			break ;
         	case '-':
-            	ans = math.subtract() ;
-            	break ;
+	            	ans = math.subtract() ;
+	            	break ;
         	case '*':
-            	ans = math.multiply() ;
-            	break ;
+	            	ans = math.multiply() ;
+	            	break ;
         	case '/':
         		ans = math.divide() ;
         		break ;
 		case '!':
-	    	cout << "Enter a number: " ;
-	    	cin >> num1 ;
+		    	cout << "Enter a number: " ;
+		    	cin >> num1 ;
 
-	    	ans = math.factorial(num1) ;
-	    	math.setSecond(0) ;
-	    	math.setFirst(num1) ; 
-	    	break ;
+		    	ans = math.factorial(num1) ;
+		    	math.setSecond(0) ;
+		    	math.setFirst(num1) ; 
+	    		break ;
 		default:
-	    	cout << "Invalid opperation" << endl ;
-	    	return 0 ;
+		    	cout << "Invalid opperation" << endl ;
+		    	return 0 ;
     }
 
     cout.precision(5) ;
