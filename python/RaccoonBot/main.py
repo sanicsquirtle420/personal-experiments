@@ -2,9 +2,17 @@ import discord # py-cord
 from discord.ext import commands
 import json
 import random
+import os
+from dotenv import load_dotenv
+import logging
+
+dir: str = "/home/raccoon/raccoon_bot/" # needed to run on my server can be commented out
+load_dotenv()
+logging.basicConfig(level=logging.INFO , format="%(asctime)s - %(message)s" , datefmt="%m-%d-%Y %H:%M:%S")
 
 # FUNCTIONS
-with open("overwatch_quotes.json", "r") as file:
+with open(dir + "overwatch_quotes.json", "r") as file:
+    # remove "dir +" if you comment out dir variable
     data = json.load(file)
 
 def get_quote():
@@ -16,30 +24,30 @@ client = commands.Bot(intents = discord.Intents.default())
 
 @client.event
 async def on_ready():
-    print(f"Logged in as {client.user} (ID: {client.user.id})")
+    logging.info(f"Logged in as {client.user} (ID: {client.user.id})")
 
 # COMMANDS
 @client.slash_command(name="hello" , description="Greets the user!")
 async def hello(ctx, name: str = None):
-    name = name or ctx.author.name
+    name = name or ctx.author.display_name
     await ctx.respond(f"""
         https://tenor.com/view/kiriko-kiriko-overwatch-kiriko-donut-kiriko-donuts-overwatch-gif-26882998
         \nLet the kitsune guide you, {name}!""")
-    print(f"\t{ctx.author.name} used the command HELLO")
+    logging.info(f"\t{ctx.author.name} used the command HELLO")
 
 @client.slash_command(name="overwatch-quote" , description="Sends a random Overwatch quote")
 async def ow_quote(ctx):
     await ctx.respond(get_quote())
-    print(f"\t{ctx.author.name} used the command OVERWATCH QUOTES")
+    logging.info(f"\t{ctx.author.name} used the command OVERWATCH QUOTES")
 
 @client.slash_command(name="andrew-martin" , description="Sends a random cringey gif!")
 async def test(ctx):
-    await ctx.respond(f"Sorry {ctx.author.name} but this command is out of service :(")
-    print(f"\t{ctx.author.name} used the command ANDREW MARTIN CRINGE")
+    await ctx.respond(f"{ctx.author.display_name} the type of guy to suck dick and still like women.")
+    logging.info(f"\t{ctx.author.name} used the command ANDREW MARTIN CRINGE")
 
 @client.slash_command(name="credits" , description="prints the credits for Raccoon Bot")
 async def credits(ctx):
-    await ctx.respond("Made by SanicSquirtle428\nhttps://sanicsquirtle420.github.io")
-    print(f"\t{ctx.author.name} used the command CREDITS")
+    await ctx.respond("Made by Diego R. (SanicSquirtle428)\nhttps://sanicsquirtle420.github.io")
+    logging.info(f"\t{ctx.author.name} used the command CREDITS")
 
-client.run("DISCORD-BOT-TOKEN")
+client.run(os.getenv("TOKEN")) # OR client.run("DISCORD-BOT-TOKEN")
