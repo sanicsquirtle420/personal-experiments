@@ -13,12 +13,18 @@ logging.basicConfig(level=logging.INFO , format="%(asctime)s - %(message)s" , da
 # FUNCTIONS
 with open(dir + "overwatch_quotes.json", "r") as file:
     # remove "dir +" if you comment out dir variable
-    data = json.load(file)
+    ow_quotes = json.load(file)
 
-def get_quote():
-    rand = random.choice(data["quotes"])
-    response = f'"{rand["quote"]}" - {rand["person"]}'
-    return response
+def get_quote() -> str:
+    rand = random.choice(ow_quotes["quotes"])
+    return f'"{rand["quote"]}" - {rand["person"]}'
+
+with open(dir + "cringe_gifs.json" , "r") as file:
+    cringe = json.load(file)
+
+def get_cringe() -> str:
+    rand = random.choice(cringe["gifs"])
+    return f'{rand["cringe_gif"]}'
 
 client = commands.Bot(intents = discord.Intents.default())
 
@@ -40,14 +46,14 @@ async def ow_quote(ctx):
     await ctx.respond(get_quote())
     logging.info(f"\t{ctx.author.name} used the command OVERWATCH QUOTES")
 
-@client.slash_command(name="andrew-martin" , description="Sends a random cringey gif!")
+@client.slash_command(name="justanothacringe" , description="Sends a random cringey gif!")
 async def test(ctx):
-    await ctx.respond(f"{ctx.author.display_name} the type of guy to suck dick and still like women.")
-    logging.info(f"\t{ctx.author.name} used the command ANDREW MARTIN CRINGE")
+    await ctx.respond(get_cringe())
+    logging.info(f"\t{ctx.author.name} used the command JUSTANOTHACRINGE")
 
 @client.slash_command(name="credits" , description="prints the credits for Raccoon Bot")
 async def credits(ctx):
     await ctx.respond("Made by Diego R. (SanicSquirtle428)\nhttps://sanicsquirtle420.github.io")
     logging.info(f"\t{ctx.author.name} used the command CREDITS")
 
-client.run(os.getenv("TOKEN")) # OR client.run("DISCORD-BOT-TOKEN")
+client.run(os.getenv("TOKEN"))
