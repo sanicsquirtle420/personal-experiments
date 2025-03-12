@@ -2,6 +2,7 @@
 #define QUEUE_HPP
 #include "LinearNode.hpp"
 #include "Exceptions.cpp"
+#include <sstream>
 #include <string>
 
 using namespace std ;
@@ -19,7 +20,7 @@ class Queue {
         void enqueue(T element) ;
         T dequeue() ;
         T first() ;
-        std::string toString() ;
+        string toString() ;
 } ;
 
 template <typename T>
@@ -38,28 +39,34 @@ int Queue<T> :: size() {
 template <typename T>
 void Queue<T> :: enqueue(T element) {
     LinearNode<T>* node = new LinearNode(element) ;
-    if(count == 0) {
-        head = node ;
-    } else {
+    if(tail != nullptr) {
         tail -> setNext(node) ;
     }
 
     tail = node ;
+
+    if(head == nullptr) {
+        head = node ;
+    }
+
     count++ ;
 }
 
 template <typename T>
 T Queue<T> :: dequeue() {
-    if(count == 0) {
-        tail = nullptr ;
-        throw EmptyException("Queue is empty.") ;
+    if(head == nullptr) {
+        throw EmptyException("Queue is empty") ;
     }
-    T result = head -> getElement() ;
+
+    T element = head -> getElement() ;
     LinearNode<T>* tmp = head ;
     head = head -> getNext() ;
-    delete tmp ;
 
-    count-- ;
+    if(head == nullptr) {
+        tail == nullptr ;
+    }
+
+    delete tmp ;
 
     return result ;
 }
@@ -75,15 +82,15 @@ T Queue<T> :: first() {
 
 template <typename T>
 string Queue<T> :: toString() {
-    string msg = "" ;
+    stringstream msg ;
     LinearNode<T>* current = head ;
 
     while(current != nullptr) {
-        msg += to_string(current -> getElement()) + " " ;
+        msg << current -> getElement() << "\n" ;
         current = current -> getNext() ;
     }
 
-    return msg ;
+    return msg.str() ;
 }
 
 #endif
