@@ -20,6 +20,11 @@ class Queue {
         void enqueue(T element) ;
         T dequeue() ;
         T first() ;
+        void setHead(LinearNode<T>* h) ;
+        void setTail(LinearNode<T>* t) ;
+        LinearNode<T>* getHead() ;
+        LinearNode<T>* getTail() ;
+        Queue<T> merge(Queue<T> &two) ;
         string toString() ;
 } ;
 
@@ -75,6 +80,55 @@ T Queue<T> :: first() {
     }
 
     return head -> getElement() ;
+}
+
+template <typename T>
+void Queue<T> :: setHead(LinearNode<T>* h) {
+    head = h ;
+}
+
+template <typename T>
+void Queue<T> :: setTail(LinearNode<T>* t) {
+    tail = t ;
+}
+
+template <typename T>
+LinearNode<T>* Queue<T> :: getHead() {
+    return head ;
+}
+
+template <typename T>
+LinearNode<T>* Queue<T> :: getTail() {
+    return tail ;
+}
+
+template <typename T>
+Queue<T> Queue<T> :: merge(Queue<T> &other) {
+    Queue<T> tmp ;
+    if(!head) {
+        // Current is empty
+        tmp.setHead(other.getHead()) ;
+        tmp.setTail(other.getTail()) ;
+    }
+    if(!other.head) {
+        // Other is empty
+        tmp.setHead(head) ;
+        tmp.setTail(tail) ;
+    }
+    else if(head && other.head){
+        // Both have values
+        LinearNode<T>* curr = head ;
+        while(curr != nullptr) {
+            // ensures that Current doesn't change
+            tmp.enqueue(curr -> getElement()) ;
+            curr = curr -> getNext() ;
+        }
+
+        tmp.tail -> setNext(other.head) ;
+        tmp.setTail(other.tail) ;
+    }
+
+    return tmp ;
 }
 
 template <typename T>
