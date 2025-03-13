@@ -59,16 +59,13 @@ T Queue<T> :: dequeue() {
     }
 
     T element = head -> getElement() ;
-    LinearNode<T>* tmp = head ;
     head = head -> getNext() ;
 
     if(head == nullptr) {
         tail == nullptr ;
     }
 
-    delete tmp ;
-
-    return result ;
+    return element ;
 }
 
 template <typename T>
