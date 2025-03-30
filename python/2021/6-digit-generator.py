@@ -1,41 +1,19 @@
-import random, sys
+import random
 
-answer = 'y'
+def main():
+    answer = 'y'
+    print("Welcome to the Wholesome 6 Digit Number Program :)")
 
-print("Welcome to the Wholesome 6 Digit Number Program :)")
-print('')
+    while answer == 'y':
+      rand_num = random.randint(0, 999999)
+      rand_str = str(rand_num)
+      while len(rand_str) <= 6:
+          rand_str = "0" + rand_str
+      print(f"\nHere is... \n{rand_str}")
+      answer = input("\nContinue [y/n]: ")
 
-while answer == 'y':
+    if answer != 'y':
+      print('Have Fun :)')
 
-  print("Here is...")
-  print('')
-
-  randomNumber = random.randint(0, 999999)
-
-  if randomNumber < 10:
-    print("00000" + str(randomNumber))
-
-  elif randomNumber < 100:
-    print("0000" + str(randomNumber))
-
-  elif randomNumber < 1000:
-    print("000" + str(randomNumber))
-
-  elif randomNumber < 10000:
-    print("00" + str(randomNumber))
-
-  elif randomNumber < 100000:
-    print("0" + str(randomNumber))
-
-  elif randomNumber < 1000000:
-    print(str(randomNumber))
-
-  print('')
-  print("If you want more type 'y' if not type anything else.")
-  print('')
-  answer = input()
-  print('')
-
-while answer != 'y':
-  print('Have Fun :)')
-  break
+if __name__ == "__main__":
+    main()
